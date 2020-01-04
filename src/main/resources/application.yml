@@ -1,21 +1,19 @@
-spring.cloud.stream.kafka.binder:
-  brokers: localhost:9092
 spring.cloud.stream:
   function.definition: supplier;consumer;
   bindings:
     supplier-out-0:
       destination: topic-out
-#      binder: kafka1
+      binder: kafka1
     consumer-in-0:
       destination: topic-in
-#      binder: kafka1
-#  binders:
-#    kafka1:
-#      type: kafka
-#      environment:
-#        spring:
-#          cloud:
-#            stream:
-#              kafka:
-#                binder:
-#                  brokers: localhost:9092
+      binder: kafka1
+  binders:
+    kafka1:
+      type: kafka
+      environment:
+        spring:
+          cloud:
+            stream:
+              kafka:
+                binder:
+                  brokers: localhost:9092
