@@ -13,10 +13,6 @@ import java.util.function.Supplier;
 
 @SpringBootApplication
 public class Application {
-    public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-    }
-
     private EmitterProcessor<Message<String>> processor =  EmitterProcessor.create();
 
     @Bean
@@ -27,5 +23,9 @@ public class Application {
     @Bean
     public Consumer<String> consumer() {
         return msg -> processor.onNext(MessageBuilder.withPayload(msg).build());
+    }
+
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
     }
 }
